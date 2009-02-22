@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<project name="webquiz" basedir="." default="war">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="war.dir" value="${build.dir}/war" />
+	<property name="webapp.dir" value="${build.dir}/webapp" />
+	<property name="webinf.dir" value="${webapp.dir}/WEB-INF" />
+	<property name="webapp.lib.dir" value="${webinf.dir}/lib" />
+	<property name="classes.dir" value="${webinf.dir}/classes" />
+	<property name="conf.dir" value="conf" />
+	<property name="lib.dir" value="lib" />
+	<property name="web.dir" value="web" />
+	
+	<property name="servlet.jar" value="/usr/local/apache-tomcat-5.5.16/common/lib/servlet-api.jar" />
+	<property name="mysql.jar" value="${lib.dir}/mysql-connector-java-3.1.12-bin.jar" />
+	
+	<property name="tomcat.manager" value="http://localhost:8080/manager" />
+	<property name="tomcat.username" value="davidwinter" />
+	<property name="tomcat.password" value="123" />
+	
+	<path id="compile.classpath">
+        <pathelement location="${mysql.jar}"/>
+        <pathelement location="${servlet.jar}"/>
+      </path>
+	
+	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" />
+	<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask" />
+	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" />
+	
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+		
+		<!--<undeploy url="${tomcat.manager}"
+			username="${tomcat.username}"
+			password="${tomcat.password}"
+			path="/${ant.project.name}" />-->
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${war.dir}" />
+		<mkdir dir="${webapp.dir}" />
+		<mkdir dir="${webinf.dir}" />
+		<mkdir dir="${classes.dir}" />
+	</target>
+	
+	<target name="compile" depends="init">
+		<!-- web.xml -->
+		<copy file="${conf.dir}/web.xml" todir="${webinf.dir}" />
+		<!-- Views -->
+		<copy todir="${webapp.dir}">
+			<fileset dir="${web.dir}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<!-- Library files -->
+		<copy todir="${webapp.lib.dir}">
+			<fileset dir="${lib.dir}" />
+		</copy>
+		
+		<javac srcdir="${src.dir}" destdir="${classes.dir}">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="war" depends="compile">
+		<war destfile="${war.dir}/${ant.project.name}.war" webxml="${conf.dir}/web.xml">
+			<fileset dir="${webapp.dir}">
+				<exclude name="${webinf.dir}/web.xml" />
+			</fileset>
+		</war>
+	</target>
+	
+	<target name="deploy" depends="war">
+		<!--<deploy url="${tomcat.manager}"
+			username="${tomcat.username}"
+			password="${tomcat.password}"
+			path="/${ant.project.name}"
+			update="true"
+			localWar="${war.dir}/${ant.project.name}.war" />-->
+	</target>
+	
+</project>

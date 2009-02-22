@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	
+	<link rel="stylesheet" href="stylesheets/quiz.css" type="text/css" />
+
+	<title>Quiz</title>
+	
+</head>
+
+<body>
+<h1>Quiz</h1>
+
+<p>Answer all of the questions below, and then submit for your mark.</p>
+
+<p class="result">You scored <span class="score">89%</span>
+    <br /><span class="compliment">Congratulations, David!</span></p>
+    
+<h2>High Scores Table</h2>
+
+<table class="highscores">
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Score</th>
+    </tr>
+    <tr>
+        <td>1st</td>
+        <td>David Winter</td>
+        <td>100%</td>
+    </tr>
+    <tr>
+        <td>2nd</td>
+        <td>James Bond</td>
+        <td>93%</td>
+    </tr>
+    <tr>
+        <td>3rd</td>
+        <td>Auric Goldfinger</td>
+        <td>13%</td>
+    </tr>
+</table>
+
+<form action="" method="post" id="quiz">
+    <fieldset>
+        <p><label for="name">Your name:</label> 
+        <input type="text" name="name" id="name" /></p>
+    
+        <dl>
+            <dt>What James Bond film is to be released on November 17, 2006?</dt>
+                <dd><input type="radio" name="1" value="1" />Dr. No</dd>
+                <dd><input type="radio" name="1" value="2" />Casino Royale</dd>
+                <dd><input type="radio" name="1" value="3" />Die Another Day</dd>
+    
+            <dt>What actor appeared in only one James Bond film?</dt>
+                <dd><input type="radio" name="2" value="1" />George Lazenby</dd>
+                <dd><input type="radio" name="2" value="2" />Timothy Dalton</dd>
+                <dd><input type="radio" name="2" value="3" />Desmond Llewelyan</dd>
+        
+            <dt>Which film did the following piece of dialog feature - &ldquo;Shocking. Positively shocking.&rdquo;</dt>
+                <dd><input type="radio" name="1" value="2" />Tomorrow Never Dies</dd>
+                <dd><input type="radio" name="1" value="2" />Thunderball</dd>
+                <dd><input type="radio" name="1" value="2" />Goldfinger</dd>
+            
+            <dt>What James Bond film is to be released on November 17, 2006?</dt>
+                <dd><input type="radio" name="1" value="1" />Dr. No</dd>
+                <dd><input type="radio" name="1" value="2" />Casino Royale</dd>
+                <dd><input type="radio" name="1" value="3" />Die Another Day</dd>
+
+            <dt>What actor appeared in only one James Bond film?</dt>
+                <dd><input type="radio" name="2" value="1" />George Lazenby</dd>
+                <dd><input type="radio" name="2" value="2" />Timothy Dalton</dd>
+                <dd><input type="radio" name="2" value="3" />Desmond Llewelyan</dd>
+
+            <dt>Which film did the following piece of dialog feature - &ldquo;Shocking. Positively shocking.&rdquo;</dt>
+                <dd><input type="radio" name="1" value="2" />Tomorrow Never Dies</dd>
+                <dd><input type="radio" name="1" value="2" />Thunderball</dd>
+                <dd><input type="radio" name="1" value="2" />Goldfinger</dd>
+    
+        </dl>
+    
+        <p><label for="showresults">Show review of in/correct answers?</label>
+        <input type="checkbox" name="showresults" id="showresults" /></p>
+    
+        <input type="submit" value="Submit Answers" />
+        <input type="reset" value="Clear current Answers" />
+    </fieldset>
+</form>
+<p class="info">Developed by, <a href="mailto:djw@davidwinter.me.uk">David Winter</a> using <a href="http://java.sun.com">Java</a>.
+    <br /><span class="tagline">A simple, elegant and clean web quiz app.</span></p>
+</body>
+</html>
